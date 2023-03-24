@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ordem de serviço</title>
+    </head>
+
+    <body>
+        <!-- Formulario -->
+        <div>
+            <form action="" method="POST">
+                <fieldset>
+                    <h1>Cadastro de ordem de serviços</h1><br>
+
+                    <div>
+                        <label for="name">Nome: </label>
+                        <input type="text" id="name" class="name" placeholder="Seu nome" required>
+                    </div><br>
+
+                    <div>
+                        <label for="cpf">CPF: </label>
+                        <input type="text" id="cpf" class="cpf" placeholder="000.000.000-00" required>
+                    </div><br>
+
+                    <div>
+                        <label for="adress">Endereço: </label>
+                        <input type="text" id="adress" name="adress" placeholder="Rua, Número, Bairro, CEP, Cidade" required>
+                    </div><br>
+
+                    <div>
+                        <label for="model">Modelo do celular: </label>
+                        <select name="model" id="model">
+                            <optgroup label="modelos">
+                                <option value="iphone">Iphone</option>
+                                <option value="samsung">Samsung</option>
+                                <option value="motorola">Motorola</option>
+                            </optgroup>
+                        </select>
+                    </div><br>
+
+                    <div>
+                        <label for="relato">Relato: </label>
+                        <textarea name="relato" id="relato" cols="100" rows="1">Seu Relato</textarea>
+                    </div><br>
+
+                    <div>
+                        <label for="img">Imagem do aparelho: </label>
+                        <input type="file" id="img" name="img" required>
+                    </div><br>
+
+                    <div>
+                        <input type="submit">
+                    </div>
+
+                    <br>
+        
+                    <a href="home.html">Voltar</a>
+                    
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
