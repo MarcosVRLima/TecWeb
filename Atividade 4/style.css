@@ -83,7 +83,7 @@ div .title{
 
 }
 
-@media tv {
+@media screen and  (min-width: 1921px)  {
     .q3{
         height: 40px;
     }
@@ -113,7 +113,7 @@ div .title{
     #bandeira{
         background-image: url(./img/flag-brazil.webp);
         background-repeat: no-repeat, repeat;
-        width: 70%;
+        width: 30%;
         background-repeat: no-repeat;
         background-size: 100%;
     }
