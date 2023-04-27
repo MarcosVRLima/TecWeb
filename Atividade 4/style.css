@@ -1,0 +1,68 @@
+body{
+    width: 100%;
+    height: 100%;
+}
+
+div .title{
+    display: flex;
+    justify-content: center;
+}
+
+#q1 {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+@media screen and (max-width: 320px){
+    #q1{
+        background-color: black;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px){
+    #q1{
+        background-color: lightblue;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px){
+    #q1{
+        background-color: lightgreen;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px){
+    #q1{
+        background-color: lightyellow;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 800px){
+    #q1{
+        background-color: brown;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1024px){
+    #q1{
+        background-color: darkblue;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1280px){
+    #q1{
+        background-color: darkgreen;
+    }
+}
+
+@media screen and (min-width: 1281px){
+    #q1{
+        background-color: darkred;
+    }
+}
+
+
