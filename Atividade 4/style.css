@@ -10,11 +10,59 @@ div .title{
 
 #q1 {
     height: 200px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
     margin-bottom: 35px;
+}
+
+#q2{
+    margin-bottom: 35px;
+}
+
+#q3{
+    height: 200px;
+    margin-bottom: 35px;
+}
+
+@media screen and (max-width: 480px){
+    
+    #q3{
+        background-color: #93c47d;
+    }
+    
+}
+
+@media screen and (min-width: 481px) and (max-width: 1920px) {
+    #q3-1{
+        height: 100px;
+        background-color: #93c47d;
+    }
+    #q3-2{
+        height: 100px;
+        background-color: #4a86e8;
+    }
+}
+
+@media tv {
+    .q3{
+        height: 40px;
+    }
+    #q3-1, #q3-4{
+        background-color: #93c47d;
+    }
+
+    #q3-2, #q3-5{
+        background-color: #4a86e8;
+    }
+
+    #q3-3{
+        background-color: #b4a7d6;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    #q2{
+        height: 200px;
+        background-color: black;
+    }
 }
 
 @media screen and (max-width: 320px){
