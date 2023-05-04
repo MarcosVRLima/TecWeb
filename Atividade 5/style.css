@@ -1,0 +1,152 @@
+body{
+    width: 100%;
+    height: 100%;
+    font-family: 'Bebas Neue';
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    padding: 0% 1% 2% 1%;
+}
+
+h1{
+    text-align: center;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.questao{
+    display: flex;
+    background-color: lightgray;
+    width: 100%;
+    height: 330px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    align-content: flex-start;
+}
+
+
+.box{
+    width: 20%;
+    height: 100px;
+    margin: 10px;
+    background-color: CornflowerBlue;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#questao1{
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#questao3{
+    justify-content: flex-end;
+}
+
+#questao4{
+    justify-content: center;
+}
+
+#questao5{
+    flex-wrap: wrap;
+}
+
+#questao6{
+    flex-direction: row-reverse;
+    flex-wrap: wrap ;
+}
+
+#questao7{
+    justify-content: space-around;
+}
+
+#questao8{
+    justify-content: space-between;
+}
+
+#questao9{
+    justify-content: center;
+    align-items: center;
+}
+
+#questao10{
+    justify-content: center;
+    align-items: center;
+}
+
+#questao10 .box:first-child{
+    height: 40%;
+}
+
+#questao10 :not(:first-child):not(:last-child){
+    height: 25%;
+}
+
+#questao10 .box:last-child{
+    height: 55%;
+}
+
+#questao11 .box{
+    width: 33%;
+    height: 94%;
+}
+
+#questao12 .box:nth-child(2){
+    background-color: tomato;
+}
+
+#questao13 .box:nth-child(2){
+    margin-top: 0;
+    font-size: 40px;
+}
+
+#questao14 .box:nth-child(2){
+    background-color: tomato;
+    order: -1;
+}
+
+#questao15 .box:nth-child(2){
+    background-color: tomato;
+}
+
+#questao15 .box:nth-child(3){
+    order: -1; 
+}
+
+#questao16, #questao17, #questao18, #questao19, #questao20{
+    align-items: center;
+}
+
+#questao16 .box:nth-child(2){
+    background-color: tomato;
+    align-self: flex-start;
+}
+
+#questao17 .box:nth-child(2){
+    background-color: tomato;
+    align-self: flex-end;
+}
+
+#questao18 .box:nth-child(2){
+    background-color: tomato;
+    height: 100%;
+}
+
+#questao19 .box:nth-child(2){
+    background-color: tomato;
+    width: 40%;
+}
+
+#questao20 .box:first-child{
+    width: 40%;
+    margin-left: 0;
+}
+
+#questao20 .box:last-child{
+    width: 40%;
+    margin-right: 0;
+}
