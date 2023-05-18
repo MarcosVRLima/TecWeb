@@ -138,7 +138,7 @@
                             <h5 class="card-header bg-warning">Vlog</h5>
                             <div class="card-body col-12">
                                 <div class="ratio ratio-16x9">
-                                    <iframe src="./videos/videoplayback.mp" allowfullscreen></iframe>
+                                    <iframe src="./videos/videoplayback.mp4" allowfullscreen></iframe>
                                 </div>
                                 <ul class="nav justify-content-center">
                                     <li class="nav-item">
@@ -166,7 +166,7 @@
                 </div>
             </div>
 
-            <div class="row row-cols-1 row-cols-xl-3 mt-3">
+            <div class="row row-cols-1 row-cols-xl-3 mt-3" id="modalidades">
                 <div class="col mb-3 m-xl-0">
                     <div class="card shadow">
                         <div class="card-body p-4">
@@ -220,7 +220,7 @@
 
             <div class="col-12 mt-3">
                 <div class="card col-12 p-0 shadow">
-                    <h5 class="card-header bg-warning">Principais modelos de bicicletas</h5>
+                    <h5 class="card-header bg-warning">Últimas avaliações</h5>
 
                     <div class="card-body col-12">
                         <div class="row row-cols-1 row-cols-xl-3">
@@ -273,8 +273,8 @@
             <div class="container-fluid row m-0 p-0 mt-4">
                 <div class="col-12 col-lg-6">
                     <div class="row me-lg-3">
-                        <div class="col-12 card p-0 shadow">
-                            <h5 class="card-header bg-warning">Ciclismo no Brasil</h5>                            
+                        <div class="col-12 card p-0 shadow" id="mais-informacoes">
+                            <h5 class="card-header bg-warning">Novidades</h5>
                             <div class="col-12 card">
                                 <div class="card-body">
                                     <div class="row g-0 mt-2">
@@ -357,11 +357,11 @@
                     <div class="row mt-3">
                         <div class="card col-12 p-0 shadow">
                             <h5 class="card-header bg-warning">Redes sociais</h5>
-                            <div class="card-body col-12">
-                                <ul class="list-group">
-                                    <li class="list-group-item"><a href="#"><img src="./images/redes-sociais/facebook.png" alt="Facebook" width="50px"></a></li>
-                                    <li class="list-group-item"><a href="#"><img src="./images/redes-sociais/twitter.png" alt="Twitter" width="50px"></a></li>
-                                    <li class="list-group-item"><a href="#"><img src="./images/redes-sociais/instagram.png" alt="Instagram" width="50px"></a></li>
+                            <div class="card-body col-12 position-relative">
+                                <ul class="list-group list-group-horizontal d-flex flex-wrap justify-content-center">
+                                    <li class="list-group-item m-2"><a href="#"><img src="./images/redes-sociais/facebook.png" alt="Facebook" width="50px"></a></li>
+                                    <li class="list-group-item m-2"><a href="#"><img src="./images/redes-sociais/twitter.png" alt="Twitter" width="50px"></a></li>
+                                    <li class="list-group-item m-2"><a href="#"><img src="./images/redes-sociais/instagram.png" alt="Instagram" width="50px"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -404,7 +404,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 order-first order-lg-0">
+                    <div class="col-12 col-lg-6 order-first order-lg-0" id="eventos">
                         <div class="p-0 me-lg-3">
                             <div class="card">
                                 <img src="./images/eventos/evento1.png" class="card-img-top" alt="...">
@@ -466,24 +466,38 @@
             </div>
         </div>
 
-        <footer class="container-fluid">
-            <div class="card">
-                <div class="col-4">
-                    <h4>Contato</h4>
-                        <p>Rua Ciclista, 123 - Sobral, CE</p>
-                        <p>contato@ciclismo.com.br</p>
-                        <p>(88) 1234-5678</p>
-                </div>
-
-                <div class="col-4">
-                    <div>
-                        <p>&copy; 2023 Ciclismo.com.br</p>
-                    </div>
-                    <div>
-                        <ul>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                        </ul> 
+        <footer>
+            <div class="col-12 mt-3">
+                <div class="card col-12 p-0 shadow">
+                    <div class="card-body col-12">
+                        <div class="row row-cols-1 row-cols-xl-2">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="card-body d-flex flex-column align-items-center">
+                                    <h4>Contato</h4>
+                                    <p>Rua Ciclista, 123 - Sobral, CE</p>
+                                    <p>contato@ciclismo.com.br</p>
+                                    <p>(88) 1234-5678</p>
+                                  </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="card-body d-flex flex-column align-items-center">
+                                    <div>
+                                        <h5>&copy; 2023 Ciclismo.com.br</h5>
+                                    </div>
+                                    <div>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><a href="#">Política de Privacidade</a></li>
+                                            <li class="list-group-item"><a href="#">Termos de Uso</a></li>
+                                        </ul> 
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
