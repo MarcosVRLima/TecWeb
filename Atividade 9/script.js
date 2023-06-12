@@ -27,7 +27,7 @@ exports.questao2 = function(entrada){
     return entrada.slice(); // Utiliza o método slice() para criar uma cópia do array
 }
 
-// Função para retornar os primeiros 'entrada' elementos de um array aleatório
+// Função para retornar os primeiros `n` elementos de um array aleatório
 exports.questao3 = function(entrada = 1){
     var arrayAleatorio = criaArrayAleatorio(25, 0, 100)
     console.log(arrayAleatorio);
@@ -38,7 +38,7 @@ exports.questao3 = function(entrada = 1){
     return array;
 }
 
-// Função para retornar os últimos 'entrada' elementos de um array aleatório
+// Função para retornar os últimos `n` elementos de um array aleatório
 exports.questao4 = function(entrada = 24){
     var arrayAleatorio = criarArrayAleatorio(25, 0, 100)
     console.log(arrayAleatorio);

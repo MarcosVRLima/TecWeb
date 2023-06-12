@@ -20,11 +20,11 @@ Esta função retorna uma cópia do array `entrada` fornecido.
 
 ### 4. `questao3(entrada = 1)`
 
-Esta função retorna os primeiros `entrada` elementos de um array aleatório.
+Esta função retorna os primeiros `n` elementos de um array aleatório.
 
 ### 5. `questao4(entrada = 24)`
 
-Esta função retorna os últimos `entrada` elementos de um array aleatório.
+Esta função retorna os últimos `n` elementos de um array aleatório.
 
 ### 6. `questao5(entrada)`
 
