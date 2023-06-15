@@ -28,6 +28,7 @@
                 document.body.appendChild(msg)
             }
         }
+
         function ajax() {
             const xhr = new XMLHttpRequest()
             xhr.open(config.metodo, config.url, true)//true para assincrona
@@ -43,15 +44,16 @@
                 }
                 console.log(xhr.status);
             }
-       const data = {
-        name: "Moraes",
-        job:"desenvolvedor" 
-        };
+            
+            const data = {
+                name: "Moraes",
+                job:"desenvolvedor" 
+            };
   
-      console.log(data);
+            console.log(data);
   
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify(data));
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(data));
     
         }
 
@@ -72,7 +74,7 @@
             document.body.appendChild(tabela);
         }
 
-       function criarLinhaTabela() {
+        function criarLinhaTabela() {
             const tab = document.createElement('table');
 
             const tdId = document.createElement('td');
