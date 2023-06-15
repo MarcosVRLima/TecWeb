@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'
+        fetch(url)
+            .then(resp => resp.json())//retorna uma promise
+            .then(estados => {
+                const itens = estados.reduce(
+                    (html, estado) => html + `<li>${estado.nome}</li>`, ''
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            })
+
+      /*
+      Promise é um objeto usado para processamento assíncrono. 
+      Um Promise (de "promessa") representa um valor que pode estar disponível agora, 
+      no futuro ou nunca.
+      https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise
+      */      
+    </script>
+</body>

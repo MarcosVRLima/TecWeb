@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Dicas</h1>
+
+    <button onclick="ajax()">Enviar </button>
+
+    <script>
+        const config={
+            url: "https://reqres.in/api/users",
+            metodo: "POST",
+            sucesso(resposta) {
+                alert("deu");
+                const dicas = JSON.parse(resposta)
+                console.log(dicas);
+                criarTabela(dicas);
+            },
+            erro(e) {
+                alert("nao deu");
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        }
+        function ajax() {
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)//true para assincrona
+
+            xhr.onload = e => {
+                if (xhr.status === 201) {
+                    config.sucesso(xhr.response)
+                } else if (xhr.status >= 400) {
+                    config.erro({
+                        codigo: xhr.status,
+                        texto: xhr.statusText
+                    })
+                }
+                console.log(xhr.status);
+            }
+       const data = {
+        name: "Moraes",
+        job:"desenvolvedor" 
+        };
+  
+      console.log(data);
+  
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify(data));
+    
+        }
+
+        function criarTabela(dica) {
+            const tdId = document.createElement('td');
+            tdId.innerHTML = dica.id;
+            
+            const tdDica = document.createElement('td');
+            tdDica.innerHTML = dica.advice;
+            
+            const tr = document.createElement('tr');
+
+            tr.appendChild(tdId);
+            tr.appendChild(tdDica);
+
+            const tabela = document.createElement('table');
+            tabela.appendChild(tr);
+            document.body.appendChild(tabela);
+        }
+
+       function criarLinhaTabela() {
+            const tab = document.createElement('table');
+
+            const tdId = document.createElement('td');
+            //tdId.innerHTML = dica.id;
+          
+            const tr = document.createElement('tr');
+            tdId= appendChild(tab);
+            tr.appendChild(tdId);
+           
+
+            const tabela = document.createElement('table');
+            tabela.appendChild(tr);
+            document.body.appendChild(tabela);
+        }
+    </script>
+</body>

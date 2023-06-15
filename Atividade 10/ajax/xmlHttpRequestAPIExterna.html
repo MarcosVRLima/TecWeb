@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Dicas</h1>
+
+    <button onclick="ajax()">Mais Dicas </button>
+
+    <script>
+        const config={
+            url: "https://api.adviceslip.com/advice",
+            metodo: "GET",
+            sucesso(resposta) {
+                const dicas = JSON.parse(resposta)
+                criarTabela(dicas.slip);
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        }
+        function ajax() {
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)//true para assincrona
+
+            xhr.onload = e => {
+                if (xhr.status === 200) {
+                    config.sucesso(xhr.response)
+                } else if (xhr.status >= 400) {
+                    config.erro({
+                        codigo: xhr.status,
+                        texto: xhr.statusText
+                    })
+                }
+            }
+
+            xhr.send()
+        }
+
+        function criarTabela(dica) {
+            const tdId = document.createElement('td');
+            tdId.innerHTML = dica.id;
+            
+            const tdDica = document.createElement('td');
+            tdDica.innerHTML = dica.advice;
+            
+            const tr = document.createElement('tr');
+
+            tr.appendChild(tdId);
+            tr.appendChild(tdDica);
+
+            const tabela = document.createElement('table');
+            tabela.appendChild(tr);
+            document.body.appendChild(tabela);
+        }
+
+        
+        ajax();
+    </script>
+</body>
