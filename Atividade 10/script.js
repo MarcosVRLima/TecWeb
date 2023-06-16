@@ -8,32 +8,45 @@ function modal(type){
     crud.value = type;
 }
 
-function request(config){
-    console.log(config);
+function alerts(message, type, icon){
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible mt-3" role="alert">`,
+    `   <div><i class="fas fa-${icon} fa-md"></i> ${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+    ].join('')
 
-    // Enviando a requisição para a API
-    var xhr = new XMLHttpRequest();
-    xhr.open(config.method, config.url, true);
-
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            // Faça aqui o que desejar com os dados da API
-            showResponse(response.data);
-        } else {
-            console.error('Erro ao consultar a API. Código de status:', xhr.status);
-            // Faça aqui o tratamento de erros, se necessário
-        }
-    };
-
-    xhr.onerror = function() {
-        console.error('Erro ao fazer a requisição à API.');
-        // Faça aqui o tratamento de erros, se necessário
-    };
-
-    xhr.send();
+    alertPlaceholder.append(wrapper)
 }
 
+async function request(config){
+    return new Promise(function(resolve, reject){
+        var xhr = new XMLHttpRequest();
+        xhr.open(config.method, config.url, true);
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log(JSON.parse(xhr.responseText).data);
+                resolve(JSON.parse(xhr.responseText).data);
+            }else if(xhr.status === 201){
+                console.log(JSON.parse(xhr.responseText));
+                resolve(JSON.parse(xhr.responseText));
+            } else {
+                reject(new Error(xhr.statusText));
+            }
+        };
+
+        xhr.onerror = function() {
+            reject(new Error('Erro de conexão'));
+        };
+
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.send(JSON.stringify(config.data));
+    });
+}
 
 document.getElementById("formModal").addEventListener("submit", function(event) {
     event.preventDefault(); // Evita o envio padrão do formulário
@@ -41,17 +54,26 @@ document.getElementById("formModal").addEventListener("submit", function(event) 
     var formulario = new FormData(event.target); // Cria um objeto FormData com os dados do formulário
   
     // Acessando os valores dos campos individualmente
-    //var email = formulario.get("email");
-    //var type = formulario.get("type");
-    var method = 'GET';
-    var url = 'https://reqres.in/api/users/1';
-    
-    const config = {
-        'method': method, 
-        'url': url
-    };
+    var name = formulario.get('name').trim();
+    name = name.split(" ");
+    if(name.length < 2){
+        name.push('');
+    }
+    var email = formulario.get("email").trim();
+    var type = formulario.get("type").trim();
 
-    request(config);
+    var data = {
+        'first_name': name[0],
+        'last_name': name[1],
+        'email': email,
+        'type': type
+    }
+
+    switch(type){
+        case "Postar":
+            create(data);
+            break;
+    }
 
     var button = document.querySelector("#fecharModal");
     button.click();
@@ -60,11 +82,11 @@ document.getElementById("formModal").addEventListener("submit", function(event) 
 
 //mostrar response
 function showResponse(response){
+
     if(!Array.isArray(response)){
         response = [response];
     }
-    
-    console.log(response);
+
     var main = document.getElementById("main");
     main.removeAttribute("hidden");
 
@@ -78,16 +100,14 @@ function showResponse(response){
         row.classList.add('border');
         row.classList.add('p-2');
 
-        var inputs = [element.id, element.first_name + ' ' + element.last_name, element.email];
+        var inputs = [element.id, element.first_name + ' ' + element.last_name, element.email, 'bot'];
 
-        inputs.forEach(input =>{
-            var col = document.createElement("div");
-            col.classList.add("col");
-            var text = document.createElement('h6');
-            text.textContent = input;
-            col.appendChild(text)
-            row.appendChild(col);
-        });
+        row.innerHTML = 
+        "<div class='col'>" +  inputs[0]
+        + "</div><div class='col'>" + inputs[1]
+        + "</div><div class='col'>" + inputs[2]
+        + "</div><div class='col'>" + "<button class='btn btn-warning me-2' onclick='modal(" + '"Atualizar"' + ")' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fas fa-pencil fa-lg'></i></button><button class='btn btn-danger' onclick='modal(" + '"Deletar"' + ")'  data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fas fa-trash fa-lg'></i></button>"
+        + "</div>";
         
         main.appendChild(row);
     });
@@ -95,11 +115,42 @@ function showResponse(response){
 
 
 // CRUD
-function list(){
+async function list(){
     const config = {
         'method': 'GET', 
-        'url': 'https://reqres.in/api/users'
+        'url': 'https://reqres.in/api/users',
+        'type': 'Listar'
     };
 
+    try {
+        var response = await request(config);
+        //console.log('Requisição concluída: ', response);
+        showResponse(response);
+        alerts("Listagem concluída com sucesso!", "success", "check");
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    }
+
     request(config);
+}
+
+async function create(data){
+    const config = {
+        'method': 'POST', 
+        'url': 'https://reqres.in/api/users',
+        'type': 'Postar',
+        'data': data
+    };
+
+    try {
+        var response = await request(config);
+        //console.log('Requisição concluída: ', response);
+        showResponse(response);
+        alerts("Adição concluída com sucesso!", "success", "check");
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    }
+
+    request(config);
+
 }
