@@ -9,7 +9,8 @@ function modal(type){
 }
 
 function alerts(message, type, icon){
-    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+    alertPlaceholder.innerHTML = "";
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
     `<div class="alert alert-${type} alert-dismissible mt-3" role="alert">`,
