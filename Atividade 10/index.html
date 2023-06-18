@@ -17,8 +17,6 @@
             <article class=" d-flex justify-content-around">
                 <button type="button" class="btn btn-light" onclick="list()">Listar</button>
                 <button type="button" class="btn btn-light" onclick="modal('Postar')"  data-bs-toggle="modal" data-bs-target="#exampleModal">Postar</button>
-                <!--<button type="button" class="btn btn-light" onclick="modal('Atualizar')"  data-bs-toggle="modal" data-bs-target="#exampleModal">Atualizar</button>
-                <button type="button" class="btn btn-light" onclick="modal('Deletar')"  data-bs-toggle="modal" data-bs-target="#exampleModal">Deletar</button>-->
             </article>
         </nav>
 
@@ -57,14 +55,15 @@
                                 <div class="input-group">
                                     <div class="input-group-text" id="btnGroupAddon">&</div>
                                 
-                                    <input type="text" class="form-control" id="email" name="name" aria-describedby="name" required>
+                                    <input type="text" class="form-control" id="name" name="name" aria-describedby="name" required>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-text" id="btnGroupAddon">@</div>
                                 
-                                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                                    <input type="email" class="form-control" id="email" name="email" aria-describedby="email" required>
                                 </div>
                                 <input type="hidden" name="type" value="" id="type">
+                                <input type="hidden" name="id" value="" id="id">
                             </div>
                         </form>
                     </div>
