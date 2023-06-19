@@ -1,4 +1,11 @@
 function modal(type, id){
+    var inputGroup = document.getElementsByClassName("input-group");
+    for(var i = 0; i < inputGroup.length; i++) {
+        inputGroup[i].removeAttribute("hidden");
+    }
+
+    document.getElementById('bodyMsg').textContent = '';
+
     document.getElementById("formModal").reset();
     var title = document.querySelector("#exampleModalLabel");
     title.textContent = type;
@@ -9,11 +16,23 @@ function modal(type, id){
     var idUser = document.querySelector("#id");
     idUser.value = id;
 
-    if(type == "Atualizar"){
-        var nameUser = document.getElementById(("nameUser" + id)).value;
-        var emailUser = document.getElementById(("emailUser" + id)).value;
+    var nameUser;
+    var emailUser;
+    if(id != 0){
+        console.log("nameUser" + id);
+        nameUser = document.getElementById(("nameUser" + id)).value;
+        emailUser = document.getElementById(("emailUser" + id)).value; 
         document.getElementById("formModal").name.value = nameUser;
         document.getElementById("formModal").email.value = emailUser; 
+    }
+
+    if(type == "Deletar"){
+        for(var i = 0; i < inputGroup.length; i++) {
+            inputGroup[i].setAttribute("hidden", true);
+        }
+
+        var msg = document.getElementById("bodyMsg");
+        msg.textContent = "Você realmente dejesa apagar este usuário?";
     }
 }
 
@@ -48,6 +67,8 @@ async function request(config, type){
             }else if(xhr.status === 201){
                 console.log(JSON.parse(xhr.responseText));
                 resolve(JSON.parse(xhr.responseText));
+            }else if(xhr.status === 204){
+                alert('Deletou');
             } else {
                 reject(new Error(xhr.statusText));
             }
@@ -89,9 +110,12 @@ document.getElementById("formModal").addEventListener("submit", function(event) 
             create(data, type);
             break;
         case "Atualizar":
-            data.id = parseInt(id);
-            console.log(id);
+            data.id = id;
             update(data, type);
+            break;
+        case "Deletar":
+            data.id = id;
+            deleteUser(id, type);
     }
 
     var button = document.querySelector("#fecharModal");
@@ -124,7 +148,7 @@ function showResponse(response){
         "<div class='col'>" +  inputs[0]
         + "</div><div class='col'>" + inputs[1] + "<input type='text' value='" + inputs[1] + "' id='nameUser" + inputs[0] + "' hidden>"
         + "</div><div class='col'>" + inputs[2] + "<input type='text' value='" + inputs[2] + "' id='emailUser" + inputs[0] + "' hidden>"
-        + "</div><div class='col'>" + "<button class='btn btn-warning me-2' onclick='modal(" + '"Atualizar", ' + inputs[0] +  ")' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fas fa-pencil fa-lg'></i></button><button class='btn btn-danger' onclick='modal(" + '"Deletar"' + ")'  data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fas fa-trash fa-lg'></i></button>"
+        + "</div><div class='col'>" + "<button class='btn btn-warning me-2' onclick='modal(" + '"Atualizar", ' + inputs[0] +  ")' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fas fa-pencil fa-lg'></i></button><button class='btn btn-danger' onclick='modal(" + '"Deletar", ' + inputs[0] + ")'  data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fas fa-trash fa-lg'></i></button>"
         + "</div>";
         
         main.appendChild(row);
@@ -176,6 +200,20 @@ async function update(data, type){
         var response = await request(config, type);
         showResponse(response);
         alerts("Atualização concluída com sucesso!", "success", "check");
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    }
+}
+
+async function deleteUser(id, type){
+    const config = {
+        'method': 'DELETE', 
+        'url': 'https://reqres.in/api/users/' + id,
+    };
+
+    try {
+        var response = await request(config, type);
+        alerts("Delete concluído com sucesso!", "success", "check");
     } catch (error) {
         console.error('Erro na requisição:', error);
     }
